@@ -44,7 +44,7 @@ class MyApp extends StatelessWidget {
       debugShowCheckedModeBanner: false,
       theme: ThemeConfig.getThemeConfig(isDarkMode, context),
       key: ValueKey('${context.locale}'),
-      title: 'e-Ve pro',
+      title: 'View project',
       scaffoldMessengerKey: snackBarKey,
       initialRoute: '/',
       routes: routesRoot,
