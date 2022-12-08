@@ -1,7 +1,36 @@
 import 'package:flutter/material.dart';
+import 'package:easy_localization/easy_localization.dart';
+import 'package:provider/provider.dart';
 
-void main() {
-  runApp(const MyApp());
+import '_helpers/global_snackbar.dart';
+import '_helpers/providers_root.dart';
+import '_helpers/routes_root.dart';
+import '_helpers/theme_data.dart';
+import '_helpers/theme_provider.dart';
+import '_utils/check_locale.dart';
+import 'config/environment.dart';
+
+void main() async {
+  const String environment = String.fromEnvironment(
+    'ENVIRONMENT',
+    defaultValue: Environment.development,
+  );
+
+  Environment().initConfig(environment);
+  WidgetsFlutterBinding.ensureInitialized();
+  await EasyLocalization.ensureInitialized();
+  checkLocale();
+  runApp(
+    ProvidersRoot(
+      app: EasyLocalization(
+        child: const MyApp(),
+        supportedLocales: const [Locale('ru'), Locale('en'), Locale('kk')],
+        path: 'assets/translations',
+        startLocale: const Locale('ru'),
+        fallbackLocale: const Locale('ru'),
+      ),
+    ),
+  );
 }
 
 class MyApp extends StatelessWidget {
@@ -9,61 +38,21 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    ThemeModel model = context.watch<ThemeModel>();
+    bool isDarkMode = model.mode == ThemeMode.dark;
     return MaterialApp(
-      title: 'Flutter Demo',
-      theme: ThemeData(
-        primarySwatch: Colors.blue,
-      ),
-      home: const MyHomePage(title: 'Flutter Demo Home Page'),
+      debugShowCheckedModeBanner: false,
+      theme: ThemeConfig.getThemeConfig(isDarkMode, context),
+      key: ValueKey('${context.locale}'),
+      title: 'e-Ve pro',
+      scaffoldMessengerKey: snackBarKey,
+      initialRoute: '/',
+      routes: routesRoot,
+      localizationsDelegates: context.localizationDelegates,
+      supportedLocales: context.supportedLocales,
+      locale: context.locale,
     );
   }
 }
 
-class MyHomePage extends StatefulWidget {
-  const MyHomePage({super.key, required this.title});
 
-
-  final String title;
-
-  @override
-  State<MyHomePage> createState() => _MyHomePageState();
-}
-
-class _MyHomePageState extends State<MyHomePage> {
-  int _counter = 0;
-
-  void _incrementCounter() {
-    setState(() {
-      _counter++;
-    });
-  }
-
-  @override
-  Widget build(BuildContext context) {
-
-    return Scaffold(
-      appBar: AppBar(
-        title: Text(widget.title),
-      ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
-            ),
-            Text(
-              '$_counter',
-              style: Theme.of(context).textTheme.headline4,
-            ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: _incrementCounter,
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
-      ),
-    );
-  }
-}
