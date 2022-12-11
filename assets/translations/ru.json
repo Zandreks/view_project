@@ -1,3 +1,39 @@
 {
+  "login_page_title": "АВторизация",
+  "login_page_login": "Введите электронный адрес",
+  "login_page_password": "Введите пароль",
+  "login_page_labelEmail": "Email",
+  "login_page_labelPassword": "Пароль",
+  "login_page_savePassword": "Запомнить пароль",
+  "login_page_textButton": "Войти",
+  "validator_email":"Введите действительный адрес электронной почты",
 
+  "user_error_login": "Не удалось авторизоваться",
+  "user_error_profile": "Ваша сессия истекла",
+  "user_error_logout": "Не удалось выйти из системы",
+  "user_error_remove": "Не удалось удалить учетную запись",
+
+
+  "menu_bar_leng": "Выбор языка",
+  "menu_bar_delete": "Удалить учетную запись",
+  "menu_bar_logout": "Выйти",
+
+  "home_page_dialog_title": "Вы действительно хотите удалить учетную запись?",
+  "home_page_dialog_yes": "Дв",
+  "home_page_dialog_no": "Нет",
+
+
+  "edit_language_item_russian": "Русский",
+  "edit_language_item_kazakh": "Казахский",
+  "edit_language_item_english": "Английский",
+
+  "notification_error_load": "Не удалось загрузить список уведомлений",
+  "notification_title": "Уведомления",
+  "notification_button_text": "Непрочитанные",
+  "notification_read": "Уведомление отмечено, как прочитанное",
+  "notification_unread": "Уведомление отмечено, как непрочитанное",
+  "notification_remove": "Уведомление удалено",
+  "notification_remove_error": "Не удалось удалить",
+  "notification_read_error": "Не удалось отметить, как прочитанное",
+  "notification_unread_error": "Не удалось отметить, как непрочитанное"
 }

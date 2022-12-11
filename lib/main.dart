@@ -19,15 +19,15 @@ void main() async {
   Environment().initConfig(environment);
   WidgetsFlutterBinding.ensureInitialized();
   await EasyLocalization.ensureInitialized();
-  checkLocale();
+  await checkLocale();
   runApp(
     ProvidersRoot(
       app: EasyLocalization(
-        child: const MyApp(),
         supportedLocales: const [Locale('ru'), Locale('en'), Locale('kk')],
         path: 'assets/translations',
         startLocale: const Locale('ru'),
         fallbackLocale: const Locale('ru'),
+        child: const MyApp(),
       ),
     ),
   );
@@ -46,11 +46,11 @@ class MyApp extends StatelessWidget {
       key: ValueKey('${context.locale}'),
       title: 'View project',
       scaffoldMessengerKey: snackBarKey,
-      initialRoute: '/',
+      initialRoute: '/login',
       routes: routesRoot,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
-      locale: context.locale,
+      locale: context.locale
     );
   }
 }

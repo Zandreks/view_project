@@ -17,6 +17,7 @@ class HttpService {
     String? accessToken = prefs.getString('accessToken');
     return {
       "Content-Type": "application/json",
+      "Accept": "application/json",
       "Content-Language": localLocale ?? 'ru',
       "Authorization": "Bearer $accessToken",
       "Keep-Alive": "timeout=30, max=2000",

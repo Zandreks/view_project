@@ -43,6 +43,9 @@ dependencies:
   easy_localization: ^3.0.1
   url_launcher: ^6.1.7
   logger: ^1.1.0
+  from_css_color: ^2.0.0
+  dropdown_button2: ^1.9.2
+  flutter_slidable: ^2.0.0
 
 dev_dependencies:
   flutter_test:
