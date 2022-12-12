@@ -47,7 +47,6 @@ class NotificationProvider extends ChangeNotifier {
     isNotificationUnread = !isNotificationUnread;
     notifyListeners();
     notificationUnreadFilter();
-
   }
   void clearState() {
     loadingFirstPage = true;

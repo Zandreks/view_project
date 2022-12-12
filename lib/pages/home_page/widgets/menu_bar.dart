@@ -73,27 +73,6 @@ class _MenuBarState extends State<MenuBar> {
             ),
           ),
           DropdownMenuItem(
-            value: "delete",
-            onTap: () {
-             provider.setShouModal();
-            },
-            child: Row(
-              children: [
-                Icon(Icons.delete, color: fromCssColor("#8B96A5"), size: 22),
-                const SizedBox(
-                  width: 10,
-                ),
-                Text(
-                  tr('menu_bar_delete'),
-                  style: TextStyle(
-                      color: fromCssColor('#121F3E'),
-                      fontWeight: FontWeight.w600,
-                      fontSize: 16),
-                ),
-              ],
-            ),
-          ),
-          DropdownMenuItem(
             value: "logout",
             onTap: () => provider.logout(context),
             child: Row(
@@ -118,7 +97,7 @@ class _MenuBarState extends State<MenuBar> {
         dropdownWidth: 300,
         dropdownPadding: const EdgeInsets.only(top: 20, bottom: 20),
         dropdownDecoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(4),
+          borderRadius: BorderRadius.circular(8),
           color: Colors.white,
         ),
         dropdownElevation: 8,

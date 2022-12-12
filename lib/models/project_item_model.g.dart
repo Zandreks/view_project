@@ -61,6 +61,7 @@ ProjectItemModel _$ProjectItemModelFromJson(Map<String, dynamic> json) =>
       businessPlanFileId: json['business_plan_file_id'] as String?,
       finEconom: json['fin_econom'] as String?,
       marketingPlan: json['marketing_plan'] as String?,
+      commentCount: json['comment_count'] as int?,
     );
 
 Map<String, dynamic> _$ProjectItemModelToJson(ProjectItemModel instance) =>
@@ -108,4 +109,5 @@ Map<String, dynamic> _$ProjectItemModelToJson(ProjectItemModel instance) =>
       'business_plan_file_id': instance.businessPlanFileId,
       'fin_econom': instance.finEconom,
       'marketing_plan': instance.marketingPlan,
+      'comment_count': instance.commentCount,
     };

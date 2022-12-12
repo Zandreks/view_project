@@ -35,5 +35,11 @@
   "notification_remove": "Уведомление удалено",
   "notification_remove_error": "Не удалось удалить",
   "notification_read_error": "Не удалось отметить, как прочитанное",
-  "notification_unread_error": "Не удалось отметить, как непрочитанное"
+  "notification_unread_error": "Не удалось отметить, как непрочитанное",
+
+  "home_page_error_lod_project": "Не удалось загрузить список проектов",
+  "home_page_allProject": "Все проекты",
+  "home_page_doneProject": "Завершенные проекты",
+  "home_page_doneCard": "Выполнено",
+  "home_page_endCard": "До"
 }

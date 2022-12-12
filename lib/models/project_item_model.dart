@@ -77,7 +77,8 @@ class ProjectItemModel {
   String? finEconom;
   @JsonKey(name: "marketing_plan")
   String? marketingPlan;
-
+  @JsonKey(name: "comment_count")
+  int? commentCount;
   ProjectItemModel(
       {this.id,
         this.name,
@@ -121,7 +122,8 @@ class ProjectItemModel {
         this.businessPlan,
         this.businessPlanFileId,
         this.finEconom,
-        this.marketingPlan});
+        this.marketingPlan,
+      this.commentCount});
   factory ProjectItemModel.fromJson(Map<String, dynamic> json) => _$ProjectItemModelFromJson(json);
   Map<String, dynamic> toJson() => _$ProjectItemModelToJson(this);
 }

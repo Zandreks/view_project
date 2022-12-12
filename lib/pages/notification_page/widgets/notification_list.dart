@@ -13,7 +13,6 @@ class NotificationList extends StatefulWidget {
   State<NotificationList> createState() => _NotificationListState();
 }
 
-void doNothing(BuildContext context) {}
 
 class _NotificationListState extends State<NotificationList> {
   @override
@@ -93,9 +92,9 @@ class _NotificationListState extends State<NotificationList> {
                           "${provider.notificationListFilter[childIndex].description}",
                           style: TextStyle(
                               fontSize: 16,
-                              fontWeight: FontWeight.w700,
                               color: fromCssColor("#121F3E")),
                         ),
+                        const SizedBox(height: 5,),
                         Text(
                           getParseDate(
                               provider.notificationListFilter[childIndex]

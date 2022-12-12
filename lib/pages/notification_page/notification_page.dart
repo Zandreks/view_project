@@ -18,11 +18,18 @@ class _NotificationPageState extends State<NotificationPage> {
     context.read<NotificationProvider>().getNotification();
     super.initState();
   }
+
   @override
   void deactivate() {
     super.deactivate();
     context.read<NotificationProvider>().clearState();
   }
+
+  Future<void> _pullRefresh() async {
+    context.read<NotificationProvider>().clearState();
+    context.read<NotificationProvider>().getNotification();
+  }
+
   @override
   Widget build(BuildContext context) {
     bool isUnread = context.select<NotificationProvider, bool>(
@@ -38,58 +45,62 @@ class _NotificationPageState extends State<NotificationPage> {
         centerTitle: false,
       ),
       body: SafeArea(
-        child: SingleChildScrollView(
-          controller: provider.controller,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.start,
-            children: [
-              Padding(
-                padding: const EdgeInsets.all(20),
-                child: ElevatedButton(
-                  style: ElevatedButton.styleFrom(
-                    backgroundColor: !isUnread
-                        ? fromCssColor("#FFFFFF")
-                        : fromCssColor("#C9E1F7"),
-                    shape: RoundedRectangleBorder(
-                      borderRadius: BorderRadius.circular(30),
+        child: RefreshIndicator(
+          onRefresh: _pullRefresh,
+          child: SingleChildScrollView(
+            physics: const AlwaysScrollableScrollPhysics(),
+            controller: provider.controller,
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(20),
+                  child: ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                      backgroundColor: !isUnread
+                          ? fromCssColor("#FFFFFF")
+                          : fromCssColor("#C9E1F7"),
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.circular(30),
+                      ),
                     ),
-                  ),
-                  onPressed: () {
-                    provider.setUnreadNotification();
-                  },
-                  child: Text(
-                    tr("notification_button_text"),
-                    style: TextStyle(
-                      color: !isUnread
-                          ? fromCssColor("#96A0B5")
-                          : fromCssColor("#338DE0"),
-                      fontWeight: FontWeight.w400,
-                      fontSize: 16,
+                    onPressed: () {
+                      provider.setUnreadNotification();
+                    },
+                    child: Text(
+                      tr("notification_button_text"),
+                      style: TextStyle(
+                        color: !isUnread
+                            ? fromCssColor("#96A0B5")
+                            : fromCssColor("#338DE0"),
+                        fontWeight: FontWeight.w400,
+                        fontSize: 16,
+                      ),
                     ),
                   ),
                 ),
-              ),
-              loadingFirstPage == true
-                  ? const Center(
+                loadingFirstPage == true
+                    ? const Center(
+                        child: SizedBox(
+                          width: 50,
+                          height: 50,
+                          child: CircularProgressIndicator(strokeWidth: 4),
+                        ),
+                      )
+                    : const NotificationList(),
+                if (loadingPage)
+                  const Padding(
+                    padding: EdgeInsets.only(top: 10, bottom: 10),
+                    child: Center(
                       child: SizedBox(
                         width: 50,
                         height: 50,
                         child: CircularProgressIndicator(strokeWidth: 4),
                       ),
-                    )
-                  : const NotificationList(),
-              if (loadingPage)
-                const Padding(
-                  padding: EdgeInsets.only(top: 10,  bottom: 10),
-                  child: Center(
-                    child: SizedBox(
-                      width: 50,
-                      height: 50,
-                      child: CircularProgressIndicator(strokeWidth: 4),
                     ),
-                  ),
-                )
-            ],
+                  )
+              ],
+            ),
           ),
         ),
       ),

@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:provider/single_child_widget.dart';
 import 'package:view_project/_helpers/theme_provider.dart';
+import 'package:view_project/pages/home_page/providers/home_provider.dart';
 import 'package:view_project/pages/login_page/providers/login_provider.dart';
 import 'package:view_project/pages/notification_page/providers/notification_provider.dart';
 
@@ -13,6 +14,7 @@ class ProvidersRoot extends StatelessWidget {
     ChangeNotifierProvider<ThemeModel>(create: (_) => ThemeModel()),
     ChangeNotifierProvider<LoginProvider>(create: (_) => LoginProvider()),
     ChangeNotifierProvider<NotificationProvider>(create: (_) => NotificationProvider()),
+    ChangeNotifierProvider<HomeProvider>(create: (_) => HomeProvider()),
   ];
 
   @override
