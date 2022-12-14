@@ -38,6 +38,7 @@
   "notification_unread_error": "Не удалось отметить, как непрочитанное",
 
   "home_page_error_lod_project": "Не удалось загрузить список проектов",
+  "home_page_error_lod_project_item": "Не удалось загрузить проект",
   "home_page_allProject": "Все проекты",
   "home_page_doneProject": "Завершенные проекты",
   "home_page_doneCard": "Выполнено",

@@ -5,5 +5,5 @@ class DevConfig implements BaseConfig {
   String get apiHost => "https://api.project.codetau.com/api/";
 
   @override
-  String get apiHostSocket => "";
+  String get storage => "https://api.project.codetau.com";
 }

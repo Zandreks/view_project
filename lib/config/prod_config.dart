@@ -5,5 +5,5 @@ class ProdConfig  implements BaseConfig {
   String get apiHost => "https://api.project.qaztourism.kz/api/";
 
   @override
-  String get apiHostSocket => "";
+  String get storage => "https://api.project.qaztourism.kz";
 }

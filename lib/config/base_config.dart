@@ -1,4 +1,4 @@
 abstract class BaseConfig {
   String get apiHost;
-  String get apiHostSocket;
+  String get storage;
 }

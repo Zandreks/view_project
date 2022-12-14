@@ -4,7 +4,6 @@ import 'package:view_project/models/project_item_model.dart';
 import 'package:view_project/models/project_pagination_model.dart';
 import 'package:view_project/pages/home_page/api/home_api.dart';
 
-
 class HomeProvider extends ChangeNotifier {
   Logger logger = Logger();
   ScrollController controller = ScrollController();
@@ -14,9 +13,9 @@ class HomeProvider extends ChangeNotifier {
   int pageNumber = 1;
   int totalCount = 0;
   bool isProjectDode = false;
-
+  bool loadProject = true;
   List<ProjectItemModel> _projectFilter = [];
-
+  ProjectItemModel projectItem = ProjectItemModel();
   List<ProjectItemModel> get projectFilter => _projectFilter;
 
   set projectFilter(List<ProjectItemModel> value) {
@@ -32,15 +31,16 @@ class HomeProvider extends ChangeNotifier {
     _projectList = value;
     notifyListeners();
   }
+
   void setDoneProject(bool val) {
     isProjectDode = val;
     notifyListeners();
     projectDoneFilter();
   }
+
   Future<void> getProjects() async {
     try {
-      ProjectPaginationModel? res =
-      await HomeApi.getProjectApi(pageNumber);
+      ProjectPaginationModel? res = await HomeApi.getProjectApi(pageNumber);
       if (res != null) {
         totalCount = res.total!;
         projectList = res.data!;
@@ -51,11 +51,12 @@ class HomeProvider extends ChangeNotifier {
       }
     } catch (error) {
       logger.i(error);
-    }finally {
+    } finally {
       loadingFirstPage = false;
       notifyListeners();
     }
   }
+
   Future<void> loadProjectNextPage() async {
     if (hasNextPage == true &&
         loadingFirstPage == false &&
@@ -64,8 +65,7 @@ class HomeProvider extends ChangeNotifier {
       loadingPage = true;
       notifyListeners();
       try {
-        ProjectPaginationModel? res =
-        await HomeApi.getProjectApi(pageNumber);
+        ProjectPaginationModel? res = await HomeApi.getProjectApi(pageNumber);
 
         if (res != null) {
           List<ProjectItemModel> copyResponse = [...?res.data];
@@ -79,29 +79,48 @@ class HomeProvider extends ChangeNotifier {
         }
       } catch (error) {
         logger.i(error);
-      }finally {
+      } finally {
         loadingPage = false;
         notifyListeners();
       }
     }
   }
-  void projectDoneFilter(){
-    if(isProjectDode){
+
+  void projectDoneFilter() {
+    if (isProjectDode) {
       List<ProjectItemModel> copy = [...projectList];
       projectFilter = copy.where((i) => i.status == "done").toList();
-    }else{
+    } else {
       projectFilter = projectList;
     }
   }
+
   void clearState() {
     loadingFirstPage = true;
     loadingPage = false;
     hasNextPage = true;
-    isProjectDode=false;
+    isProjectDode = false;
     pageNumber = 1;
     totalCount = 0;
     projectList = [];
     projectFilter = [];
     controller.removeListener(loadProjectNextPage);
+  }
+
+  Future<void> getProjectItem(int id) async {
+    try {
+      loadProject = true;
+      notifyListeners();
+      ProjectItemModel? res = await HomeApi.getProjectItemApi(id);
+      if (res != null) {
+        projectItem = res;
+        notifyListeners();
+      }
+    } catch (error) {
+      logger.i(error);
+    } finally {
+      loadProject = false;
+      notifyListeners();
+    }
   }
 }

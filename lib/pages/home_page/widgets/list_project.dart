@@ -6,6 +6,7 @@ import 'package:provider/provider.dart';
 import 'package:view_project/_utils/parse_date.dart';
 import 'package:view_project/models/project_item_model.dart';
 import 'package:view_project/pages/home_page/providers/home_provider.dart';
+import 'package:view_project/pages/home_page/widgets/project_item_page.dart';
 
 class ListProject extends StatefulWidget {
   const ListProject({Key? key}) : super(key: key);
@@ -31,7 +32,15 @@ class _ListProjectState extends State<ListProject> {
             color: Colors.white,
             margin: const EdgeInsets.symmetric(vertical: 10, horizontal: 15),
             child: InkWell(
-              onTap: () {},
+              onTap: () {
+                Navigator.push(
+                  context,
+                  MaterialPageRoute<void>(
+                    builder: (context) =>  ProjectItemPage(id: item.id!,),
+                    fullscreenDialog: true,
+                  ),
+                );
+              },
               child: Container(
                 padding: const EdgeInsets.all(15),
                 child: Column(
