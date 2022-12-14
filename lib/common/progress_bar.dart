@@ -1,7 +1,23 @@
 import 'package:flutter/material.dart';
+import 'package:provider/provider.dart';
 
-class ProgressBar extends StatelessWidget {
+import '../pages/login_page/providers/login_provider.dart';
+
+class ProgressBar extends StatefulWidget {
   const ProgressBar({Key? key}) : super(key: key);
+
+  @override
+  State<ProgressBar> createState() => _ProgressBarState();
+}
+
+class _ProgressBarState extends State<ProgressBar> {
+
+  @override
+  void initState() {
+    LoginProvider provider = context.read<LoginProvider>();
+    provider.getProfile(context);
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

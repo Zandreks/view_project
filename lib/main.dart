@@ -13,7 +13,7 @@ import 'config/environment.dart';
 void main() async {
   const String environment = String.fromEnvironment(
     'ENVIRONMENT',
-    defaultValue: Environment.development,
+    defaultValue: Environment.production,
   );
 
   Environment().initConfig(environment);
@@ -46,7 +46,7 @@ class MyApp extends StatelessWidget {
       key: ValueKey('${context.locale}'),
       title: 'View project',
       scaffoldMessengerKey: snackBarKey,
-      initialRoute: '/login',
+      initialRoute: '/',
       routes: routesRoot,
       localizationsDelegates: context.localizationDelegates,
       supportedLocales: context.supportedLocales,
