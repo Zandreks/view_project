@@ -1,6 +1,7 @@
 import 'package:dropdown_button2/dropdown_button2.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'package:provider/provider.dart';
 import 'package:shared_preferences/shared_preferences.dart';
@@ -21,7 +22,9 @@ class _MenuBarState extends State<MenuBar> {
     LoginProvider provider = context.read<LoginProvider>();
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
-        customButton: Image.asset("assets/icons/menu.png"),
+        customButton: SvgPicture.asset(
+          "assets/icons/menu.svg",
+        ),
         items: [
           DropdownMenuItem(
             enabled: false,

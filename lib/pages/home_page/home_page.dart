@@ -2,6 +2,7 @@ import 'dart:async';
 
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'package:provider/provider.dart';
 import 'package:view_project/models/notification_data_model.dart';
@@ -68,12 +69,16 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
           centerTitle: false,
-          title: Image.asset("assets/images/logoBar.png", fit: BoxFit.cover),
+          title:  SvgPicture.asset(
+            "assets/icons/logo.svg",
+              fit: BoxFit.cover
+          ),
           actions: <Widget>[
             Stack(children: [
               IconButton(
-                icon: Image.asset("assets/icons/notification.png",
-                    fit: BoxFit.cover),
+                icon: SvgPicture.asset(
+                    "assets/icons/notification.svg",
+                ),
                 onPressed: () {
                   Navigator.push(
                     context,

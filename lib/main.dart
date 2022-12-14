@@ -13,7 +13,7 @@ import 'config/environment.dart';
 void main() async {
   const String environment = String.fromEnvironment(
     'ENVIRONMENT',
-    defaultValue: Environment.production,
+    defaultValue: Environment.development,
   );
 
   Environment().initConfig(environment);

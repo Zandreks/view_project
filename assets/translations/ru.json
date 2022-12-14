@@ -42,5 +42,14 @@
   "home_page_allProject": "Все проекты",
   "home_page_doneProject": "Завершенные проекты",
   "home_page_doneCard": "Выполнено",
-  "home_page_endCard": "До"
+  "home_page_endCard": "До",
+  "home_page_error_load": "Изображение отсутствует",
+  "home_page_typeProject_infrastructure": "Инфраструктурный",
+  "home_page_typeProject_investment": "Инвестиционный",
+  "home_page_typeProject_contract": "Договор",
+  "home_page_typeProject_normal": "",
+  "home_page_typeProject": "Тип проекта:",
+  "home_page_description": "Описание",
+  "home_page_full": "Развернуть",
+  "home_page_smail": "Свернуть"
 }

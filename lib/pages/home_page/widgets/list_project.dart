@@ -1,11 +1,12 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 import 'package:provider/provider.dart';
 import 'package:view_project/_utils/parse_date.dart';
 import 'package:view_project/pages/home_page/providers/home_provider.dart';
-import 'package:view_project/pages/home_page/widgets/project_item_page.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/project_item_page.dart';
 
 class ListProject extends StatefulWidget {
   const ListProject({Key? key}) : super(key: key);
@@ -118,7 +119,9 @@ class _ListProjectState extends State<ListProject> {
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Row(
                                   children: [
-                                    Image.asset("assets/icons/commentIcon.png"),
+                                    SvgPicture.asset(
+                                      "assets/icons/commentIcon.svg",
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 3),
                                       child: Text(
@@ -136,7 +139,9 @@ class _ListProjectState extends State<ListProject> {
                                 padding: const EdgeInsets.only(right: 20),
                                 child: Row(
                                   children: [
-                                    Image.asset("assets/icons/tsskIcon.png"),
+                                    SvgPicture.asset(
+                                      "assets/icons/tsskIcon.svg",
+                                    ),
                                     Padding(
                                       padding: const EdgeInsets.only(left: 3),
                                       child: Text(
@@ -152,7 +157,9 @@ class _ListProjectState extends State<ListProject> {
                               ),
                               Row(
                                 children: [
-                                  Image.asset("assets/icons/fileIcon.png"),
+                                  SvgPicture.asset(
+                                    "assets/icons/fileIcon.svg",
+                                  ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 3),
                                     child: Text(
