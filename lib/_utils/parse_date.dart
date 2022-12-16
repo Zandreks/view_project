@@ -10,6 +10,15 @@ String getParseDate(String date,Locale locale) {
   return formatted;
 }
 
+String getParse(String date,Locale locale) {
+  DateTime dateTime = DateFormat('y-M-d',locale.languageCode).parse(date);
+
+  DateFormat formatter = DateFormat('d MMMM y H:m',locale.languageCode);
+  String formatted = formatter.format(dateTime);
+  return formatted;
+}
+
+
 String getParseDateProject(String date,Locale locale) {
   DateTime dateTime = DateFormat('y-M-d',locale.languageCode).parse(date);
 

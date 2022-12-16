@@ -51,13 +51,6 @@ class ThemeConfig {
           textStyle: const TextStyle(fontWeight: FontWeight.bold),
         ),
       ),
-      outlinedButtonTheme: OutlinedButtonThemeData(
-        style: OutlinedButton.styleFrom(
-          shape: border,
-          minimumSize: const Size.fromHeight(56),
-          textStyle: const TextStyle(fontWeight: FontWeight.bold),
-        ),
-      ),
       elevatedButtonTheme: ElevatedButtonThemeData(
         style: ElevatedButton.styleFrom(
           shape: border,

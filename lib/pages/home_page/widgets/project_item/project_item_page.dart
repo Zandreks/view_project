@@ -1,9 +1,15 @@
-
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:view_project/models/project_item_model.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/file_list.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/get_order.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/info_bse.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/info_project.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/list_status_infrastructure.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/list_status_investment.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/task_list.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/team_list.dart';
 
 import '../../../../config/environment.dart';
 import '../../providers/home_provider.dart';
@@ -66,20 +72,24 @@ class _ProjectItemPageState extends State<ProjectItemPage> {
                                 return Container(
                                   color: Colors.black,
                                   alignment: Alignment.center,
-                                  child:  Text(
+                                  child: Text(
                                     tr('home_page_error_load'),
-                                    style: const TextStyle(fontSize: 20, color: Colors.white),
+                                    style: const TextStyle(
+                                        fontSize: 20, color: Colors.white),
                                   ),
                                 );
                               },
-                              loadingBuilder: (BuildContext context, Widget child,
+                              loadingBuilder: (BuildContext context,
+                                  Widget child,
                                   ImageChunkEvent? loadingProgress) {
                                 if (loadingProgress == null) return child;
                                 return Center(
                                   child: CircularProgressIndicator(
-                                    value: loadingProgress.expectedTotalBytes != null
-                                        ? loadingProgress.cumulativeBytesLoaded /
-                                        loadingProgress.expectedTotalBytes!
+                                    value: loadingProgress.expectedTotalBytes !=
+                                            null
+                                        ? loadingProgress
+                                                .cumulativeBytesLoaded /
+                                            loadingProgress.expectedTotalBytes!
                                         : null,
                                   ),
                                 );
@@ -98,7 +108,37 @@ class _ProjectItemPageState extends State<ProjectItemPage> {
                           ))
                         ],
                       ),
-                      const InfoBase()
+                      const InfoBase(),
+                      Padding(
+                        padding: const EdgeInsets.only(top: 15),
+                        child: (projectItem.projectType != null)
+                            ? (projectItem.projectType == 'infrastructure'
+                                ? const ListStatusInfrastructure()
+                                : projectItem.projectType == "investment"
+                                    ? const ListStatusInvestment()
+                                    : const SizedBox())
+                            : const SizedBox(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: InfoProject(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: TeamList(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: FileList(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: TaskList(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: GetOrder(),
+                      )
                     ],
                   ),
                 ),
