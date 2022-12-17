@@ -55,7 +55,7 @@ class FileList extends StatelessWidget {
                       onPressed: () async {
                         final Uri _url = Uri.parse(
                             '$baseUrl${projectItem.files?[childIndex].src ?? ""}');
-                        if (!await launchUrl(_url)) {}
+                        if (!await launchUrl(_url,mode: LaunchMode.externalNonBrowserApplication)) {}
                       },
                       child: Text(
                         projectItem.files?[childIndex].name ?? '',

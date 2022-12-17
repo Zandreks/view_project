@@ -41,12 +41,10 @@ ProjectItemModel _$ProjectItemModelFromJson(Map<String, dynamic> json) =>
       files: (json['files'] as List<dynamic>?)
           ?.map((e) => FileModel.fromJson(e as Map<String, dynamic>))
           .toList(),
-      finSum: json['fin_sum'] as int?,
       finSource: (json['fin_source'] as List<dynamic>?)
           ?.map((e) => e as String)
           .toList(),
-      finSourceSumLocalBudget: json['fin_source_sum_local_budget'] as String?,
-      finSourceSumOther: json['fin_source_sum_other'] as String?,
+      finSourceSumOther: json['finSourceSumOther'] as String?,
       zu: json['zu'] as String?,
       zu_number: json['zu_number'] as String?,
       zu_comment: json['zu_comment'] as String?,
@@ -87,6 +85,14 @@ ProjectItemModel _$ProjectItemModelFromJson(Map<String, dynamic> json) =>
       business_plan_comment: json['business_plan_comment'] as String?,
       marketing_plan: json['marketing_plan'] as String?,
       marketing_plan_comment: json['marketing_plan_comment'] as String?,
+      fin_sum: json['fin_sum'] as int?,
+      fin_source_sum_budget: json['fin_source_sum_budget'] as String?,
+      fin_source_sum_investments: json['fin_source_sum_investments'] as String?,
+      fin_source_sum_local_budget:
+          json['fin_source_sum_local_budget'] as String?,
+      fin_source_sum_other: json['fin_source_sum_other'] as String?,
+      fin_source_sum_republican_budget:
+          json['fin_source_sum_republican_budget'] as String?,
       commentCount: json['comment_count'] as int?,
     );
 
@@ -132,6 +138,13 @@ Map<String, dynamic> _$ProjectItemModelToJson(ProjectItemModel instance) =>
       'fin_econom_comment': instance.fin_econom_comment,
       'marketing_plan': instance.marketing_plan,
       'marketing_plan_comment': instance.marketing_plan_comment,
+      'fin_sum': instance.fin_sum,
+      'fin_source_sum_budget': instance.fin_source_sum_budget,
+      'fin_source_sum_investments': instance.fin_source_sum_investments,
+      'fin_source_sum_local_budget': instance.fin_source_sum_local_budget,
+      'fin_source_sum_other': instance.fin_source_sum_other,
+      'fin_source_sum_republican_budget':
+          instance.fin_source_sum_republican_budget,
       'done_date': instance.doneDate,
       'created_at': instance.createdAt,
       'updated_at': instance.updatedAt,
@@ -150,10 +163,8 @@ Map<String, dynamic> _$ProjectItemModelToJson(ProjectItemModel instance) =>
       'members': instance.members,
       'curators': instance.curators,
       'files': instance.files,
-      'fin_sum': instance.finSum,
       'fin_source': instance.finSource,
-      'fin_source_sum_local_budget': instance.finSourceSumLocalBudget,
-      'fin_source_sum_other': instance.finSourceSumOther,
+      'finSourceSumOther': instance.finSourceSumOther,
       'zu_file_id': instance.zuFileId,
       'psd_file_id': instance.psdFileId,
       'gip_file_id': instance.gipFileId,

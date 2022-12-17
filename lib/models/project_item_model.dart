@@ -51,6 +51,13 @@ class ProjectItemModel {
   String? marketing_plan;
   String? marketing_plan_comment;
 
+  int? fin_sum;
+  String? fin_source_sum_budget;
+  String? fin_source_sum_investments;
+  String? fin_source_sum_local_budget;
+  String? fin_source_sum_other;
+  String? fin_source_sum_republican_budget;
+
   @JsonKey(name: "done_date")
   dynamic doneDate;
   @JsonKey(name: "created_at")
@@ -80,13 +87,8 @@ class ProjectItemModel {
   List<MemberModel>? members;
   List<CuratorModel>? curators;
   List<FileModel>? files;
-  @JsonKey(name: "fin_sum")
-  int? finSum;
   @JsonKey(name: "fin_source")
   List<String>? finSource;
-  @JsonKey(name: "fin_source_sum_local_budget")
-  String? finSourceSumLocalBudget;
-  @JsonKey(name: "fin_source_sum_other")
   String? finSourceSumOther;
   @JsonKey(name: "zu_file_id")
   String? zuFileId;
@@ -124,9 +126,7 @@ class ProjectItemModel {
     this.members,
     this.curators,
     this.files,
-    this.finSum,
     this.finSource,
-    this.finSourceSumLocalBudget,
     this.finSourceSumOther,
     this.zu,
     this.zu_number,
@@ -168,6 +168,12 @@ class ProjectItemModel {
     this.business_plan_comment,
     this.marketing_plan,
     this.marketing_plan_comment,
+    this.fin_sum,
+    this.fin_source_sum_budget,
+    this.fin_source_sum_investments,
+    this.fin_source_sum_local_budget,
+    this.fin_source_sum_other,
+    this.fin_source_sum_republican_budget,
     this.commentCount});
 
   factory ProjectItemModel.fromJson(Map<String, dynamic> json) =>

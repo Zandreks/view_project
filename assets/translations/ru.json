@@ -96,5 +96,15 @@
   "home_page_members": "Участники",
   "home_page_fileList": "Файл проекта",
   "home_page_taskList": "Задачи проекта",
+  "home_page_summa": "Сумма:",
+  "home_page_tengw": "тенге",
+  "home_page_finSours": "Источник финансирования:",
+  "home_page_budget": "Бюджет",
+  "home_page_budgetLocal": "Местный бюджет",
+  "home_page_budgetGos": "Республиканский бюджет",
+  "home_page_budgetInvestments": "Инвестиции",
+  "home_page_budgetOther": "Другое",
+  "home_page_fullAmount": "Остаток:",
+  "home_page_prosDone": "% выполнения:",
   "home_page_getPdf": "СКАЧАТЬ PDF"
 }

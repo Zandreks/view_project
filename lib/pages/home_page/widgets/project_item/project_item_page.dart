@@ -2,6 +2,7 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:view_project/models/project_item_model.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/chart.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/file_list.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/get_order.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/info_bse.dart';
@@ -118,6 +119,10 @@ class _ProjectItemPageState extends State<ProjectItemPage> {
                                     ? const ListStatusInvestment()
                                     : const SizedBox())
                             : const SizedBox(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: Chart(),
                       ),
                       const Padding(
                         padding: EdgeInsets.only(top: 15),

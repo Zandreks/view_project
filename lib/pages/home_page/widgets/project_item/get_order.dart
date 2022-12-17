@@ -25,7 +25,7 @@ class GetOrder extends StatelessWidget {
                 onPressed: () async {
                   final Uri _url = Uri.parse(
                       '${baseUrl}v1/project/${projectItem.id}/report');
-                  if (!await launchUrl(_url)) {}
+                  if (!await launchUrl(_url,mode: LaunchMode.externalNonBrowserApplication )) {}
                 },
                 style: OutlinedButton.styleFrom(
                   backgroundColor: fromCssColor("#28C3971A"),
