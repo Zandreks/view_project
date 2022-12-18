@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:logger/logger.dart';
+import 'package:view_project/models/commentI_item_model.dart';
 import 'package:view_project/models/project_item_model.dart';
 import 'package:view_project/models/project_pagination_model.dart';
 import 'package:view_project/pages/home_page/api/home_api.dart';
@@ -14,9 +15,11 @@ class HomeProvider extends ChangeNotifier {
   int totalCount = 0;
   bool isProjectDode = false;
   bool loadProject = true;
+  List<CommentItemModel> comments = [];
   List<ProjectItemModel> _projectFilter = [];
   ProjectItemModel projectItem = ProjectItemModel();
   List<ProjectItemModel> get projectFilter => _projectFilter;
+  final commentController = TextEditingController();
 
   set projectFilter(List<ProjectItemModel> value) {
     _projectFilter = value;
@@ -121,6 +124,37 @@ class HomeProvider extends ChangeNotifier {
     } finally {
       loadProject = false;
       notifyListeners();
+    }
+  }
+  Future<void> getProjectIComments(int id) async {
+    try {
+      List<CommentItemModel>? res = await HomeApi.getCommentListApi(id);
+      if (res != null) {
+        comments = res;
+        notifyListeners();
+      }
+    } catch (error) {
+      logger.i(error);
+    } finally {
+    }
+  }
+  Future<void> addProjectIComments(int id) async {
+    try {
+      if(commentController.text.isNotEmpty){
+        dynamic data={
+          "project_id":id,
+          "text":commentController.text
+        };
+        bool res = await HomeApi.addCommentApi(data);
+        if (res) {
+          commentController.clear();
+          getProjectIComments(id);
+        }
+      }
+
+    } catch (error) {
+      logger.i(error);
+    } finally {
     }
   }
 }

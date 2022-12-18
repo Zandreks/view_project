@@ -3,6 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:provider/provider.dart';
 import 'package:view_project/models/project_item_model.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/chart.dart';
+import 'package:view_project/pages/home_page/widgets/project_item/comments.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/file_list.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/get_order.dart';
 import 'package:view_project/pages/home_page/widgets/project_item/info_bse.dart';
@@ -29,12 +30,13 @@ class _ProjectItemPageState extends State<ProjectItemPage> {
 
   Future<void> _pullRefresh() async {
     context.read<HomeProvider>().getProjectItem(widget.id);
+    context.read<HomeProvider>().getProjectIComments(widget.id);
   }
 
   @override
   void initState() {
     context.read<HomeProvider>().getProjectItem(widget.id);
-
+    context.read<HomeProvider>().getProjectIComments(widget.id);
     super.initState();
   }
 
@@ -143,6 +145,10 @@ class _ProjectItemPageState extends State<ProjectItemPage> {
                       const Padding(
                         padding: EdgeInsets.only(top: 15),
                         child: GetOrder(),
+                      ),
+                      const Padding(
+                        padding: EdgeInsets.only(top: 15),
+                        child: Comment(),
                       )
                     ],
                   ),

@@ -39,6 +39,8 @@
 
   "home_page_error_lod_project": "Не удалось загрузить список проектов",
   "home_page_error_lod_project_item": "Не удалось загрузить проект",
+  "home_page_error_loadComment": "Не удалось загрузить список комментарий",
+  "home_page_error_addComment": "Не удалось добавить комментарий",
   "home_page_allProject": "Все проекты",
   "home_page_doneProject": "Завершенные проекты",
   "home_page_doneCard": "Выполнено",
@@ -106,5 +108,7 @@
   "home_page_budgetOther": "Другое",
   "home_page_fullAmount": "Остаток:",
   "home_page_prosDone": "% выполнения:",
-  "home_page_getPdf": "СКАЧАТЬ PDF"
+  "home_page_getPdf": "СКАЧАТЬ PDF",
+  "home_page_comment": "СОБЫТИЕ",
+  "home_page_comment_add": "Добавить комментарий"
 }
