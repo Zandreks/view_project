@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter_svg/svg.dart';
 
 class Logo extends StatelessWidget {
   const Logo({Key? key}) : super(key: key);
@@ -6,7 +7,9 @@ class Logo extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Container(
-      child: Image.asset('assets/images/logo.png'),
+      child:  SvgPicture.asset(
+          "assets/images/logo.svg",
+      ),
     );
   }
 }

@@ -66,16 +66,6 @@ class _MenuBarState extends State<MenuBar> {
             ),
           ),
           DropdownMenuItem(
-            value: "en",
-            child: RadioButton(
-              label: tr("edit_language_item_english"),
-              padding: const EdgeInsets.symmetric(horizontal: 0),
-              value: const Locale('en'),
-              groupValue: context.locale,
-              onChanged: onChangedLocale,
-            ),
-          ),
-          DropdownMenuItem(
             value: "logout",
             onTap: () => provider.logout(context),
             child: Row(
