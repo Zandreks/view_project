@@ -1,6 +1,7 @@
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:flutter_svg/svg.dart';
 import 'package:from_css_color/from_css_color.dart';
 import 'package:provider/provider.dart';
 import 'package:view_project/pages/login_page/providers/login_provider.dart';
@@ -14,7 +15,11 @@ class LoginForm extends StatelessWidget {
   Widget build(BuildContext context) {
     LoginProvider provider = context.watch<LoginProvider>();
     final formKey = GlobalKey<FormState>();
-    IconData icon = provider.showPass ? Icons.visibility : Icons.visibility_off;
+    Widget icon = provider.showPass ?  SvgPicture.asset(
+      "assets/icons/eye-off.svg",
+    ) :  SvgPicture.asset(
+      "assets/icons/eye.svg",
+    );
     return Form(
       key: formKey,
       autovalidateMode: AutovalidateMode.always,
@@ -61,7 +66,7 @@ class LoginForm extends StatelessWidget {
             obscureText: !provider.showPass,
             decoration: InputDecoration(
               suffixIcon: IconButton(
-                icon: Icon(icon),
+                icon: icon,
                 onPressed: () => {provider.setShowPassword(!provider.showPass)},
               ),
               hintText: tr("login_page_password"),

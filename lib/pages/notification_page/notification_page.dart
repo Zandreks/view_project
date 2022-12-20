@@ -54,12 +54,12 @@ class _NotificationPageState extends State<NotificationPage> {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Padding(
-                  padding: const EdgeInsets.all(20),
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
+                  padding: const EdgeInsets.only(left: 20,top: 15,bottom: 15,right: 15),
+                  child: OutlinedButton(
+                    style: OutlinedButton.styleFrom(
                       backgroundColor: !isUnread
-                          ? fromCssColor("#FFFFFF")
-                          : fromCssColor("#C9E1F7"),
+                          ? Colors.transparent
+                          : fromCssColor("#338DE0"),
                       shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(30),
                       ),
@@ -72,7 +72,7 @@ class _NotificationPageState extends State<NotificationPage> {
                       style: TextStyle(
                         color: !isUnread
                             ? fromCssColor("#96A0B5")
-                            : fromCssColor("#338DE0"),
+                            :fromCssColor("#FFFFFF") ,
                         fontWeight: FontWeight.w400,
                         fontSize: 16,
                       ),

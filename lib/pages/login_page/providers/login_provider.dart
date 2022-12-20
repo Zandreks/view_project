@@ -30,7 +30,7 @@ class LoginProvider with ChangeNotifier {
     notifyListeners();
   }
 
-  bool? _savePassword = false;
+  bool? _savePassword = true;
 
   bool? get savePassword => _savePassword;
 
@@ -64,7 +64,15 @@ class LoginProvider with ChangeNotifier {
   void setSavePassword(bool? val) {
     savePassword = val;
   }
-
+  Future<void> setForm (BuildContext context)async{
+    final prefs = await SharedPreferences.getInstance();
+    if(prefs.getString("savePassword")!= null){
+      passwordController.text = prefs.getString("savePassword")!;
+    }
+    if(prefs.getString("saveEmail")!= null){
+      userNameController.text = prefs.getString("saveEmail")!;
+    }
+  }
   Future<void> login(BuildContext context) async {
     try {
       loadingForm = true;
@@ -72,6 +80,9 @@ class LoginProvider with ChangeNotifier {
       if (savePassword == true) {
         await prefs.setString('savePassword', passwordController.text);
         await prefs.setString('saveEmail', userNameController.text);
+      }else{
+        await prefs.setString('savePassword', "");
+        await prefs.setString('saveEmail', "");
       }
       TokenModel? response = await UserApi.loginApi(
           userNameController.text, passwordController.text);

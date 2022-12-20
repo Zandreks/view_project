@@ -157,8 +157,8 @@ class _ListProjectState extends State<ListProject> {
                               ),
                               Row(
                                 children: [
-                                  SvgPicture.asset(
-                                    "assets/icons/fileIcon.svg",
+                                  Image.asset(
+                                    "assets/icons/fileIcon.png",
                                   ),
                                   Padding(
                                     padding: const EdgeInsets.only(left: 3),

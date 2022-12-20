@@ -1,5 +1,6 @@
 import 'dart:async';
 
+import 'package:badges/badges.dart';
 import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/svg.dart';
@@ -68,16 +69,23 @@ class _MyHomePageState extends State<MyHomePage> {
     HomeProvider provider = context.watch<HomeProvider>();
     return Scaffold(
       appBar: AppBar(
+          backgroundColor: Colors.white,
           centerTitle: false,
-          title:  SvgPicture.asset(
-            "assets/icons/logo.svg",
-              fit: BoxFit.cover
-          ),
+          title: SvgPicture.asset("assets/icons/logo.svg", fit: BoxFit.cover),
           actions: <Widget>[
-            Stack(children: [
-              IconButton(
+            Badge(
+              shape: BadgeShape.square,
+              borderRadius: BorderRadius.circular(8),
+              position: BadgePosition.topEnd(top: 0),
+              padding: const EdgeInsets.all(2),
+              badgeContent: Text(
+                '${notificationDataModel.length}',
+                style: const TextStyle(color: Colors.white),
+              ),
+              badgeColor: fromCssColor("#FF575F"),
+              child: IconButton(
                 icon: SvgPicture.asset(
-                    "assets/icons/notification.svg",
+                  "assets/icons/notification.svg",
                 ),
                 onPressed: () {
                   Navigator.push(
@@ -89,19 +97,7 @@ class _MyHomePageState extends State<MyHomePage> {
                   );
                 },
               ),
-              Positioned(
-                top: 0,
-                right: 0,
-                child: Container(
-                  padding:
-                      const EdgeInsets.symmetric(horizontal: 6, vertical: 2),
-                  decoration: BoxDecoration(
-                      shape: BoxShape.circle, color: fromCssColor("#FF575F")),
-                  alignment: Alignment.center,
-                  child: Text('${notificationDataModel.length}'),
-                ),
-              )
-            ]),
+            ),
             const SizedBox(
               width: 45,
             ),
@@ -120,14 +116,17 @@ class _MyHomePageState extends State<MyHomePage> {
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
               Padding(
-                padding: const EdgeInsets.all(20.0),
+                padding: const EdgeInsets.only(
+                    top: 15, left: 20, bottom: 5, right: 20),
                 child: SingleChildScrollView(
                   scrollDirection: Axis.horizontal,
                   child: Row(
                     children: [
-                      ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                          backgroundColor: fromCssColor("#FFFFFF"),
+                      OutlinedButton(
+                        style: OutlinedButton.styleFrom(
+                          backgroundColor: !provider.isProjectDode
+                              ? fromCssColor("#338DE0")
+                              : Colors.transparent,
                           shape: RoundedRectangleBorder(
                             borderRadius: BorderRadius.circular(30),
                           ),
@@ -139,7 +138,7 @@ class _MyHomePageState extends State<MyHomePage> {
                           tr("home_page_allProject"),
                           style: TextStyle(
                             color: !provider.isProjectDode
-                                ? fromCssColor("#202020")
+                                ? fromCssColor("#FFFFFF")
                                 : fromCssColor("#96A0B5"),
                             fontWeight: FontWeight.w400,
                             fontSize: 16,
@@ -148,10 +147,11 @@ class _MyHomePageState extends State<MyHomePage> {
                       ),
                       Padding(
                         padding: const EdgeInsets.only(left: 15),
-                        child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                            backgroundColor: fromCssColor("#FFFFFF"),
-                            shape: RoundedRectangleBorder(
+                        child: OutlinedButton(
+                          style: OutlinedButton.styleFrom(
+                              backgroundColor: provider.isProjectDode
+                                  ? fromCssColor("#338DE0")
+                                  : Colors.transparent,                            shape: RoundedRectangleBorder(
                               borderRadius: BorderRadius.circular(30),
                             ),
                           ),
@@ -162,7 +162,7 @@ class _MyHomePageState extends State<MyHomePage> {
                             tr("home_page_doneProject"),
                             style: TextStyle(
                               color: provider.isProjectDode
-                                  ? fromCssColor("#202020")
+                                  ? fromCssColor("#FFFFFF")
                                   : fromCssColor("#96A0B5"),
                               fontWeight: FontWeight.w400,
                               fontSize: 16,

@@ -50,6 +50,7 @@ dependencies:
   flutter_svg: ^1.1.6
   fl_chart: ^0.55.2
   comment_tree: ^0.3.0
+  badges: ^2.0.3
 
 dev_dependencies:
   flutter_test:
