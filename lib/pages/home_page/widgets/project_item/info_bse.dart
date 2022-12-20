@@ -66,7 +66,7 @@ class _InfoBaseState extends State<InfoBase> {
                   color: fromCssColor('#96A0B5')),
             ),
           ),
-          fullOpen
+          !fullOpen
               ? Text(projectItem.description ?? '',
                   maxLines: 4,
                   style: TextStyle(
@@ -93,7 +93,7 @@ class _InfoBaseState extends State<InfoBase> {
                     },
                     child: Row(
                       children: [
-                        Text(tr(!fullOpen ? "home_page_full" : 'home_page_smail',),
+                        Text(tr(fullOpen ? "home_page_full" : 'home_page_smail',),
                         style: TextStyle(
                           fontSize: 14,
                           fontWeight: FontWeight.w400,
@@ -102,7 +102,7 @@ class _InfoBaseState extends State<InfoBase> {
                         Padding(
                           padding: const EdgeInsets.only(left: 10),
                           child: SvgPicture.asset(
-                            !fullOpen?"assets/icons/full.svg":"assets/icons/smail.svg",
+                            fullOpen?"assets/icons/full.svg":"assets/icons/smail.svg",
                           ),
                         ),
                       ],
