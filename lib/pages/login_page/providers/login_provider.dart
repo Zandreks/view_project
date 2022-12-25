@@ -77,13 +77,6 @@ class LoginProvider with ChangeNotifier {
     try {
       loadingForm = true;
       final prefs = await SharedPreferences.getInstance();
-      if (savePassword == true) {
-        await prefs.setString('savePassword', passwordController.text);
-        await prefs.setString('saveEmail', userNameController.text);
-      }else{
-        await prefs.setString('savePassword', "");
-        await prefs.setString('saveEmail', "");
-      }
       TokenModel? response = await UserApi.loginApi(
           userNameController.text, passwordController.text);
       if (response != null) {

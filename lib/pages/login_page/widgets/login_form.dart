@@ -73,26 +73,6 @@ class LoginForm extends StatelessWidget {
             ),
           ),
           const SizedBox(height: 16),
-          Row(
-            children: [
-              Checkbox(
-                value: provider.savePassword,
-                onChanged: (bool? value) {
-                  provider.setSavePassword(value);
-                },
-              ),
-              Container(
-                padding: const EdgeInsets.only(left: 5),
-                child: Text(
-                  tr("login_page_savePassword"),
-                  style: TextStyle(
-                      fontSize: 16,
-                      fontWeight: FontWeight.w400,
-                      color: fromCssColor('#080A1C')),
-                ),
-              )
-            ],
-          ),
           Padding(
             padding: const EdgeInsets.only(top: 50),
             child: SizedBox(
