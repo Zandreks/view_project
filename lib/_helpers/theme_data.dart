@@ -35,7 +35,7 @@ class ThemeConfig {
           // Status bar color
           statusBarColor: Colors.white,
           statusBarIconBrightness: Brightness.dark,
-          statusBarBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.light,
         ),
         titleTextStyle: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black, fontSize: 16),
