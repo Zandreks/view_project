@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:from_css_color/from_css_color.dart';
 
 class ThemeConfig {
@@ -30,6 +31,12 @@ class ThemeConfig {
         ),
       ),
       appBarTheme: AppBarTheme(
+        systemOverlayStyle: const SystemUiOverlayStyle(
+          // Status bar color
+          statusBarColor: Colors.white,
+          statusBarIconBrightness: Brightness.dark,
+          statusBarBrightness: Brightness.dark,
+        ),
         titleTextStyle: TextStyle(
             color: isDarkMode ? Colors.white : Colors.black, fontSize: 16),
         backgroundColor: Colors.white,

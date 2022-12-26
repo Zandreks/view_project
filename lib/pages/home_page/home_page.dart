@@ -68,6 +68,7 @@ class _MyHomePageState extends State<MyHomePage> {
             (state) => state.notificationUnread);
     HomeProvider provider = context.watch<HomeProvider>();
     return Scaffold(
+      key: ValueKey('${context.locale}'),
       appBar: AppBar(
           backgroundColor: Colors.white,
           centerTitle: false,
@@ -99,11 +100,11 @@ class _MyHomePageState extends State<MyHomePage> {
               ),
             ),
             const SizedBox(
-              width: 45,
+              width: 25,
             ),
             const MenuBar(),
             const SizedBox(
-              width: 31,
+              width: 11,
             ),
           ]),
       body: SafeArea(

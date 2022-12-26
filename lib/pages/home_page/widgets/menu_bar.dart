@@ -22,8 +22,11 @@ class _MenuBarState extends State<MenuBar> {
     LoginProvider provider = context.read<LoginProvider>();
     return DropdownButtonHideUnderline(
       child: DropdownButton2(
-        customButton: SvgPicture.asset(
-          "assets/icons/menu.svg",
+        customButton: Padding(
+          padding: const EdgeInsets.only(left: 20,right: 20),
+          child: SvgPicture.asset(
+            "assets/icons/menu.svg",
+          ),
         ),
         items: [
           DropdownMenuItem(

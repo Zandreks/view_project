@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:provider/provider.dart';
-import 'package:view_project/pages/login_page/providers/login_provider.dart';
+
 import 'package:view_project/pages/login_page/widgets/login_form.dart';
 import 'package:view_project/pages/login_page/widgets/logo.dart';
 import 'package:view_project/pages/login_page/widgets/tetle_head.dart';

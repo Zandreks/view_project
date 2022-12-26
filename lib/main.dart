@@ -43,7 +43,6 @@ class MyApp extends StatelessWidget {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       theme: ThemeConfig.getThemeConfig(isDarkMode, context),
-      key: ValueKey('${context.locale}'),
       title: 'View project',
       scaffoldMessengerKey: snackBarKey,
       initialRoute: '/',
