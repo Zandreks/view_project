@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:provider/provider.dart';
 
 import '../pages/login_page/providers/login_provider.dart';
@@ -11,7 +12,6 @@ class ProgressBar extends StatefulWidget {
 }
 
 class _ProgressBarState extends State<ProgressBar> {
-
   @override
   void initState() {
     LoginProvider provider = context.read<LoginProvider>();
@@ -21,26 +21,27 @@ class _ProgressBarState extends State<ProgressBar> {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      backgroundColor: Colors.white,
-      body: Center(
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.center,
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(bottom: 10),
-              child:
-              Image.asset("assets/images/logo.png"),
+    return AnnotatedRegion<SystemUiOverlayStyle>(
+        value: SystemUiOverlayStyle.dark, //<-- SEE HERE
+        child: Scaffold(
+          backgroundColor: Colors.white,
+          body: Center(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.only(bottom: 10),
+                  child: Image.asset("assets/images/logo.png"),
+                ),
+                const SizedBox(
+                  width: 50,
+                  height: 50,
+                  child: CircularProgressIndicator(strokeWidth: 4),
+                ),
+              ],
             ),
-             const SizedBox(
-              width: 50,
-              height: 50,
-              child: CircularProgressIndicator(strokeWidth: 4),
-            ),
-          ],
-        ),
-      ),
-    );
+          ),
+        ));
   }
 }
